@@ -1,0 +1,27 @@
+<div class="container show-board">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+        <div class="col-xs-12 col-md-4">
+            <img src="view1/img/circle.png">
+        </div>
+        <div class="col-xs-12 col-md-8">
+            <h1> Photo Spell Gifts. </h1>
+        </div>
+        </div>
+        <div ng-repeat="img in imgArray">
+            <img class="col-xs-12 col-md-4" ng-src={{img}} ng-style="{'height': '200px'}" ng-if="checkImg(img)" style-parent/>
+        </div>
+        <div class="col-xs-12 col-md-12">
+            <button ng-click="nextMove()"><a href="#!/view2">Spell Your Words.</a></button>
+        </div>
+    </div> 
+    <!--<a href="#"
+        socialshare
+        socialshare-provider="twitter"
+        socialshare-text="720kb AngularJS Socialshare"
+        socialshare-hashtags="angularjs, angular-socialshare"
+        socialshare-url="http://720kb.net">
+        Share me
+    </a>   -->
+</div>
+

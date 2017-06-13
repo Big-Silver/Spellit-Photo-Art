@@ -1,0 +1,62 @@
+
+<script type="text/ng-template" id="list.html">
+  <div dnd-list="list">
+    <img ng-repeat="item in list"
+      dnd-draggable="item"
+      dnd-effect-allowed="move"
+      dnd-moved="list.splice($index, 1)"
+      dnd-selected="models.selected = list"
+      ng-class="{selected: models.selected === item}"
+      ng-src={{item.url}}
+      ng-style="{'height': '200px', 'width': '120px'}"/>
+  </div>
+</script>
+
+<script type="text/ng-template" id="image.html">    
+   <img ng-style="{'height': '200px', 'width': '120px'}" ng-src={{item.url}}/>  
+</script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <button class="col-md-1" ng-repeat="spell in spellArray1" ng-click="updateImg(spell)">
+          {{spell}}
+        </button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <button class="col-md-1" ng-repeat="spell in spellArray2" ng-click="  updateImg(spell)">
+          {{spell}}
+        </button>
+      </div>
+    </div>    
+  </div>
+  <div class="image-board">
+    <div class="spell-image-board" ng-style="setSpellImgBoard(models.templates)">
+      <img ng-style="{'height': '350px', 'width': '200px'}" ng-repeat="item in models.templates" ng-src={{item.url}}
+        dnd-draggable="item"
+        dnd-effect-allowed="copy"
+        dnd-copied="item.id"
+      />
+    </div>        
+  </div>
+  To Spell your Art
+  <button ng-click="addWord()">Add word</button>
+  <button ng-click="removeWord(models.selected)">Remove word</button>
+  <div class="dropzoneRect">
+    <div class="row" ng-style="{'width': '100%'}">
+      <div ng-repeat="(zone, list) in models.dropzones">
+        <div class="dropzone box box-yellow">
+          <div ng-include="'list.html'"></div>
+        </div>
+      </div>
+    </div>                    
+  </div>
+  <button ng-click="nextMove()"><a href="#!/view3">Frame it</a></button>
+  <div class="modelContent">
+    <h2>Generated Model</h2>
+    <pre>{{modelAsJson}}</pre>
+  </div>
+</div>
